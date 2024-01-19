@@ -1,0 +1,35 @@
+Constraints são restrições para uma coluna da tabela
+
+Lista de restrições possíveis para uma coluna:
+    NOT NULL
+        Não permite que sejam adicionados valores nulos na coluna.
+    UNIQUE
+        Identifica a coluna de forma única, sem valores repetidos (mas permite NULL)
+    CHECK
+        Verifica se o valor adicionado na coluna atende a uma determinada condição (impede adição de, por exemplo, valores negativos)
+    DEFAULT
+        Retorna um valor padrão caso a coluna não seja preenchida
+    IDENTITY
+        Permite que a coluna siga uma auto numeração (usado em colunas de ID)
+    PRIMARY KEY
+        Uma chave primária é uma coluna que identifica de forma única as linhas de uma tabela.
+        Nenhum dos valores de uma coluna de chave primária deve ser nulo ou se repetir.
+        É através dessa coluna que são feitas as relações entre tabelas
+    FOREIGN KEY
+        Uma chave estrangeira é uma coluna que será relacionada com a chave primária de outra tabela
+
+
+Violação de constraints é quando ocorre um caso contrário à restrição
+    ex.: coluna NOT NULL recebendo um objeto nulo
+    ou até procurar um id (foreignkey) que não existe
+
+
+Da pra adicionar novas constraints usando ALTER TABLE
+    ALTER TABLE tabela
+        ADD CONSTRAINT tabela_nome_tipo UNIQUE(nome)
+
+
+Pra adicionar uma constraint de foreign key, você precisa especificar uma referência
+    ADD CONSTRAINT fcontratos_id_cliente_fk FOREIGN KEY(id_cliente) REFERENCES dCliente(id_cliente)
+        (adicionado na tabela fContratos, dizendo que "id_cliente" é uma foreign key que se conecta ao banco dCliente pelo id)
+
